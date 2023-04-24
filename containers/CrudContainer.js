@@ -11,7 +11,7 @@ const CrudContainer = () => {
   const [form, setForm] = useState({
     name: "",
     price: "",
-    descripcion: "",
+    description: "",
   });
 
   useEffect(() => {
@@ -42,7 +42,7 @@ const CrudContainer = () => {
     const response = await axios.get("http://localhost:3000/products/");
     setData(response.data);
   };
-
+  
   const handlePost = async () => {
     const response = await axios.post("http://localhost:3000/products/", form);
     if (response.status === 200) {
@@ -74,21 +74,21 @@ const CrudContainer = () => {
     setOpenModal(false);
     fetchData();
   };
-
   
   const handleDelete = async (id) => {
-    const response = await axios.delete(
-      `http://localhost:3000/products/${id}`
-    );
+    const confirmed = window.confirm('¿Estás seguro de que quieres eliminar este producto?');
+    if (!confirmed) {
+      return; 
+    }
+    const response = await axios.delete(`http://localhost:3000/products/${id}`);
     if (response.status === 200) {
       alert(response.data.message);
     } else {
-      alert("Producto no ha sido eliminado");
+      alert('Producto no ha sido eliminado');
     }
-    console.log("response delete", response);
     fetchData();
   };
-
+  
   const columns = [
     {
       title: "#",
@@ -107,8 +107,8 @@ const CrudContainer = () => {
     },
     {
       title: "Descripcion",
-      dataIndex: "descripcion",
-      key: "descripcion",
+      dataIndex: "description",
+      key: "description",
     },
     {
       title: "Editar",
@@ -136,7 +136,7 @@ const CrudContainer = () => {
     setForm({
       name: "",
       price: "",
-      descripcion: "",
+      description: "",
     });
   };
 
@@ -175,8 +175,8 @@ const CrudContainer = () => {
         <p>Descripcion:</p>
         <TextArea
           onChange={handleChange}
-          name="descripcion"
-          value={form && form.descripcion}
+          name="description"
+          value={form && form.description}
           placeholder="Descripcion del producto"
           rows={4}
           maxLength={25}
@@ -187,4 +187,3 @@ const CrudContainer = () => {
 };
 
 export default CrudContainer;
-
