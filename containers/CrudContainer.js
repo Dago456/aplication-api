@@ -48,7 +48,7 @@ const CrudContainer = () => {
     if (response.status === 200) {
       alert(response.data.message);
     } else {
-      alert("Producto no ha sido creado");
+      alert("El producto no se ha creado");
     }
     console.log("response post", response);
     setOpenModal(false);
@@ -68,7 +68,7 @@ const CrudContainer = () => {
     if (response.status === 200) {
       alert(response.data.message);
     } else {
-      alert("Producto no ha sido actualizado");
+      alert("El producto no se ha actualizado");
     }
     console.log("response put", response);
     setOpenModal(false);
@@ -84,7 +84,7 @@ const CrudContainer = () => {
     if (response.status === 200) {
       alert(response.data.message);
     } else {
-      alert('Producto no ha sido eliminado');
+      alert('El producto no se ha eliminado');
     }
     fetchData();
   };
@@ -144,7 +144,7 @@ const CrudContainer = () => {
     <>
       <Row>
         <Col span={12} offset={6}>
-          <h1>Mi primera api</h1>
+          <h1>Navegacion dentro de la base de datos</h1>
           <Button type="primary" onClick={showModal}>
             Crear
           </Button>
@@ -165,14 +165,14 @@ const CrudContainer = () => {
           placeholder="Nombre del producto"
           value={form && form.name}
         />
-        <p>Precio:</p>
+        <p>valor:</p>
         <Input
           onChange={handleChange}
           name="price"
           placeholder="Precio del producto"
           value={form && form.price}
         />
-        <p>Descripcion:</p>
+        <p>caracteristicas:</p>
         <TextArea
           onChange={handleChange}
           name="description"
