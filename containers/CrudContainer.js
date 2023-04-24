@@ -39,12 +39,12 @@ const CrudContainer = () => {
   };
 
   const fetchData = async () => {
-    const response = await axios.get("http://localhost:3000/products/");
+    const response = await axios.get("https://company-class-api.dago456.repl.co");
     setData(response.data);
   };
   
   const handlePost = async () => {
-    const response = await axios.post("http://localhost:3000/products/", form);
+    const response = await axios.post("https://company-class-api.dago456.repl.co", form);
     if (response.status === 200) {
       alert(response.data.message);
     } else {
@@ -62,7 +62,7 @@ const CrudContainer = () => {
 
   const handleUpdate = async () => {
     const response = await axios.put(
-      `http://localhost:3000/products/${form.id}`,
+      `https://company-class-api.dago456.repl.co${form.id}`,
       form
     );
     if (response.status === 200) {
@@ -80,7 +80,7 @@ const CrudContainer = () => {
     if (!confirmed) {
       return; 
     }
-    const response = await axios.delete(`http://localhost:3000/products/${id}`);
+    const response = await axios.delete(`https://company-class-api.dago456.repl.co${id}`);
     if (response.status === 200) {
       alert(response.data.message);
     } else {
